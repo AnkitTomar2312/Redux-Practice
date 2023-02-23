@@ -7,22 +7,25 @@ const rootReducer = (state = { count: 0 }, action) => {
       return {
         count: state.count + 1,
       };
+      break;
     }
   }
 };
 
 const store = redux.createStore(
   rootReducer,
-  { count: 0 },
+  {
+    count: 0,
+  },
   redux.applyMiddleware(thunk)
 );
 
-const actionOnStateUpdate = () => {
+const actionOnUpdateState = () => {
   const data = store.getState();
   console.log(data);
 };
 
-store.subscribe(actionOnStateUpdate);
+store.subscribe(actionOnUpdateState);
 
 const increment = () => {
   return (dispatch) => {
